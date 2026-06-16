@@ -1,0 +1,61 @@
+@import "header.scss";
+@import "index.scss";
+@import "footer.scss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --gold: #d4a843;
+  --gold-dark: #d99200;
+  --bg-nav: #2a2d34;
+  --text-white: #f5f0e8;
+  --nav-height: 80px;
+  --text-red: #6b1d3a;
+}
+.gold {
+  color: var(--gold);
+}
+
+@font-face {
+  font-family: "playfair";
+  src: url(../font/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: "lato";
+  src: url(../font/Lato/Lato-Regular.ttf);
+}
+
+body {
+  color: var(--text-white);
+}
+
+h1 {
+  text-transform: uppercase;
+}
+
+.bio {
+  height: 100vh;
+  background-color: var(--text-white);
+  display: flex;
+  color: #2a2d34;
+}
+
+.bio-info {
+  align-content: center;
+  justify-content: center;
+  text-align: start;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.bio-title {
+  color: var(--text-red);
+  text-transform: uppercase;
+}
