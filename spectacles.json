@@ -13,7 +13,7 @@
         "places_total": 120,
         "places_vendues": 87,
         "artiste": "Cie Les Éclaireurs",
-        "image": ""
+        "image": "/img/Cyrano.webp"
       },
       {
         "id": 2,
@@ -27,7 +27,7 @@
         "places_total": 120,
         "places_vendues": 120,
         "artiste": "Marina Music",
-        "image": ""
+        "image": "/img/marina.webp"
       },
       {
         "id": 3,
@@ -41,7 +41,7 @@
         "places_total": 120,
         "places_vendues": 63,
         "artiste": "Paul Music",
-        "image": ""
+        "image": "/img/paul.webp"
       },
       {
         "id": 4,
@@ -55,7 +55,7 @@
         "places_total": 120,
         "places_vendues": 112,
         "artiste": "Fadily Camara",
-        "image": ""
+        "image": "/img/fadily.webp"
       },
       {
         "id": 5,
@@ -69,7 +69,7 @@
         "places_total": 120,
         "places_vendues": 120,
         "artiste": "Cie du Passage",
-        "image": ""
+        "image": "/img/godot.webp"
       },
       {
         "id": 6,
@@ -83,7 +83,7 @@
         "places_total": 120,
         "places_vendues": 45,
         "artiste": "Ahmed Music Quartet",
-        "image": ""
+        "image": "/img/ahmed.webp"
       },
       {
         "id": 7,
@@ -97,7 +97,7 @@
         "places_total": 120,
         "places_vendues": 78,
         "artiste": "Nora Music",
-        "image": ""
+        "image": "/img/nora.webp"
       },
       {
         "id": 8,
@@ -111,7 +111,7 @@
         "places_total": 120,
         "places_vendues": 98,
         "artiste": "Jamel Comedy Club",
-        "image": ""
+        "image": "/img/jamel.webp"
       }
     ]
   }

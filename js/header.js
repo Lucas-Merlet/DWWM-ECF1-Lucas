@@ -15,7 +15,7 @@ class NavBar extends HTMLElement {
 
           <ul class="nav-links" role="list">
             <li><a href="/index.html" class="active" aria-current="page">Accueil</a></li>
-            <li><a href="programmation.html">Programmation</a></li>
+            <li><a href="/pages/programmation.html">Programmation</a></li>
             <li><a href="infos.html">Infos pratiques</a></li>
             <li><a href="/pages/contact.html">Contact</a></li>
           </ul>
