@@ -3,7 +3,7 @@ class NavBar extends HTMLElement {
     this.innerHTML = `
       <header>
         <nav class="navbar" aria-label="Navigation principale">
-          <a class="nav-brand" href="index.html" aria-label="Le Phosphore – Accueil">
+          <a class="nav-brand" href="/index.html" aria-label="Le Phosphore – Accueil">
             <div class="nav-logo" aria-hidden="true">
               <img src="/img/picto-removebg-preview.png" alt="" class="nav-logo"/>
             </div>
@@ -14,10 +14,10 @@ class NavBar extends HTMLElement {
           </a>
 
           <ul class="nav-links" role="list">
-            <li><a href="index.html" class="active" aria-current="page">Accueil</a></li>
+            <li><a href="/index.html" class="active" aria-current="page">Accueil</a></li>
             <li><a href="programmation.html">Programmation</a></li>
             <li><a href="infos.html">Infos pratiques</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/pages/contact.html">Contact</a></li>
           </ul>
 
           <a href="billetterie.html" class="nav-cta">Billetterie</a>
@@ -33,7 +33,7 @@ class NavBar extends HTMLElement {
           <a href="index.html" class="active" aria-current="page">Accueil</a>
           <a href="programmation.html">Programmation</a>
           <a href="infos.html">Infos pratiques</a>
-          <a href="contact.html">Contact</a>
+          <a href="/pages/contact.html">Contact</a>
           <a href="billetterie.html" class="nav-cta-mobile">Billetterie</a>
         </nav>
       </header>
