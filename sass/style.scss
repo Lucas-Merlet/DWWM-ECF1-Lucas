@@ -42,33 +42,116 @@ h1 {
 }
 
 .bio {
-  height: 100vh;
-  background-color: var(--text-white);
-  display: flex;
-  color: #2a2d34;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--text-white);
+  align-items: center;
 }
 
 .bio-info {
-  flex: 1;
-  align-content: center;
-  justify-content: center;
-  text-align: start;
-  margin-left: 50px;
-  margin-right: 50px;
+  padding: 3rem 2.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .bio-title {
-  color: var(--text-red);
+  font-family: "playfair";
+  font-size: 28px !important;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--text-red) !important;
+}
+
+.bio-info h2 {
+  font-family: "playfair";
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--bg-nav);
+}
+
+.bio-info hr {
+  border: none;
+  border-top: 1px solid rgba(42, 45, 52, 0.15);
+}
+
+.bio-info > p {
+  font-family: "playfair";
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: rgba(42, 45, 52, 0.75);
+}
+
+.bio-features {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.bio-features li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.bio-feature-icon {
+  width: 94px;
+  height: 94px;
+}
+
+.bio-features h3 {
+  font-family: "playfair";
+  font-size: 24px !important;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg-nav);
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.bio-features p {
+  font-family: "playfair";
+  font-size: 20px !important;
+  color: rgba(42, 45, 52, 0.55);
+  line-height: 1.4;
 }
 
 .bio-img {
-  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
 }
 
 .bio-img img {
   width: 100%;
-  height: 100%
+  height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.bio-text {
+  font-size: 20px !important;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 760px) {
+  .bio {
+    grid-template-columns: 1fr;
+  }
+
+  .bio-img {
+    min-height: 260px;
+  }
+
+  .bio-info h2 {
+    font-size: 1.9rem;
+  }
 }
