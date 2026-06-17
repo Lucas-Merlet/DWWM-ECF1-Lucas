@@ -19,7 +19,6 @@ fetch("/spectacles.json")
       const card = document.createElement("div");
       card.classList.add("event-card");
 
-      // ── Lien cliquable : image + titre ──
       const link = document.createElement("a");
       link.classList.add("event-card__link");
       link.href = `/assets/pages/fiche-projets.html?id=${projet.id}`;
@@ -61,7 +60,6 @@ fetch("/spectacles.json")
       link.appendChild(imageWrap);
       link.appendChild(body);
 
-      // ── Jauge de places restantes ──
       const remaining = projet.places_total - projet.places_vendues;
       const pct = Math.round(
         (projet.places_vendues / projet.places_total) * 100,
@@ -102,7 +100,6 @@ fetch("/spectacles.json")
       capacity.appendChild(capacityLabel);
       capacity.appendChild(capacityBar);
 
-      // ── Bouton "en savoir plus" + description ──
       const footer = document.createElement("div");
       footer.classList.add("event-card__footer");
 
@@ -130,7 +127,6 @@ fetch("/spectacles.json")
 
       footer.appendChild(toggleBtn);
 
-      // ── Assemblage final ──
       card.appendChild(link);
       card.appendChild(capacity);
       card.appendChild(footer);

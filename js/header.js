@@ -14,13 +14,13 @@ class NavBar extends HTMLElement {
           </a>
 
           <ul class="nav-links" role="list">
-            <li><a href="/index.html" class="active" aria-current="page">Accueil</a></li>
+            <li><a href="/index.html">Accueil</a></li>
             <li><a href="/pages/programmation.html">Programmation</a></li>
-            <li><a href="infos.html">Infos pratiques</a></li>
+            <li><a href="/pages/infos.html">Infos pratiques</a></li>
             <li><a href="/pages/contact.html">Contact</a></li>
           </ul>
 
-          <a href="billetterie.html" class="nav-cta">Billetterie</a>
+          <a href="/pages/billetterie.html" class="nav-cta">Billetterie</a>
 
           <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
             <span></span>
@@ -30,16 +30,15 @@ class NavBar extends HTMLElement {
         </nav>
 
         <nav class="nav-mobile" id="mobile-menu" aria-label="Menu mobile">
-          <a href="index.html" class="active" aria-current="page">Accueil</a>
-          <a href="programmation.html">Programmation</a>
-          <a href="infos.html">Infos pratiques</a>
+          <a href="/index.html">Accueil</a>
+          <a href="/pages/programmation.html">Programmation</a>
+          <a href="/pages/infos.html">Infos pratiques</a>
           <a href="/pages/contact.html">Contact</a>
-          <a href="billetterie.html" class="nav-cta-mobile">Billetterie</a>
+          <a href="/pages/billetterie.html" class="nav-cta-mobile">Billetterie</a>
         </nav>
       </header>
     `;
 
-    // ✅ Le DOM est prêt, on peut cibler les éléments
     const toggle = this.querySelector(".nav-toggle");
     const mobileMenu = this.querySelector("#mobile-menu");
 
@@ -55,6 +54,26 @@ class NavBar extends HTMLElement {
         toggle.classList.remove("open");
         toggle.setAttribute("aria-expanded", false);
       });
+    });
+
+    this.highlightCurrentPage();
+  }
+
+  highlightCurrentPage() {
+    const currentFile =
+      window.location.pathname.split("/").pop() || "index.html";
+
+    this.querySelectorAll(".nav-links a, .nav-mobile a").forEach((link) => {
+      const linkFile = link.getAttribute("href").split("/").pop();
+      const isActive = linkFile === currentFile;
+
+      link.classList.toggle("active", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
     });
   }
 }
