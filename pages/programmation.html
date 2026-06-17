@@ -4,6 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Programmation</title>
+    <link rel="stylesheet" href="/css/style.min.css" />
   </head>
-  <body></body>
+  <body>
+    <nav-bar></nav-bar>
+    <div class="page-header">
+      <h1>Programmation</h1>
+      <p>Découvrez tous nos spectacles à venir</p>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="tous">Tous</button>
+      <button class="filter-btn" data-filter="theatre">Théâtre</button>
+      <button class="filter-btn" data-filter="concert">Concerts</button>
+      <button class="filter-btn" data-filter="standup">Stand-up</button>
+    </div>
+
+    <section class="programmation">
+      <div class="events-grid" id="eventsGrid"></div>
+    </section>
+
+    <div class="load-more">
+      <button class="load-more__btn" id="loadMoreBtn">
+        Voir plus de spectacles
+      </button>
+    </div>
+    <footer-bar></footer-bar>
+    <script src="/js/header.js"></script>
+    <script src="/js/footer.js"></script>
+    <script src="/js/programmation.js"></script>
+  </body>
 </html>
