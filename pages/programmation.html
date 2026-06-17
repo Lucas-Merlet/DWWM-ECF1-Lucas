@@ -19,6 +19,20 @@
         <button class="filter-btn" data-filter="theatre">Théâtre</button>
         <button class="filter-btn" data-filter="concert">Concerts</button>
         <button class="filter-btn" data-filter="standup">Stand-up</button>
+
+        <label class="filter-date" for="dateFilter">
+          <span class="visually-hidden">Filtrer par date</span>
+          <input type="date" id="dateFilter" class="filter-date__input" />
+        </label>
+
+        <button
+          class="filter-btn filter-btn--dispo"
+          id="dispoFilterBtn"
+          type="button"
+          aria-pressed="false"
+        >
+          Disponible uniquement
+        </button>
       </div>
 
       <div class="programmation__grid" id="eventsGrid"></div>
