@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <meta
+    <meta
       name="description"
       content="Le Phosphore, salle de spectacle parisienne : théâtre, concerts et stand-up. Découvrez la programmation et réservez vos places."
     />
@@ -106,7 +106,7 @@
               <p>Parking Les Halles – 99 Rue Berger (à 5 min à pied)</p>
             </div>
 
-            
+            <a
               href="https://www.google.com/maps?q=15+Rue+des+Arts,75001+Paris"
               target="_blank"
               class="btn-bordeaux"
@@ -371,17 +371,53 @@
         </h2>
         <!-- Placeholder block, content not implemented yet -->
         <div class="plan-wrap">
-          <div class="plan-placeholder">
-            <svg viewBox="0 0 24 24">
-              <rect x="3" y="4" width="18" height="16" rx="1" />
-              <line x1="3" y1="9" x2="21" y2="9" />
-              <line x1="8" y1="9" x2="8" y2="20" />
-              <line x1="16" y1="9" x2="16" y2="20" />
-            </svg>
-            <p>
-              Le plan de salle interactif sera bientôt disponible ici.<br />Remplace
-              ce bloc par ton image ou ton plan SVG/interactif.
-            </p>
+          <div class="plan-wrap">
+            <div class="seat-map">
+              <div class="seat-map__stage" aria-hidden="true">SCÈNE</div>
+
+              <div class="seat-map__rows" id="seatMapRows"></div>
+
+              <div
+                class="seat-map__tooltip"
+                id="seatMapTooltip"
+                role="tooltip"
+                hidden
+              ></div>
+
+              <ul
+                class="seat-map__legend"
+                aria-label="Légende des catégories de places"
+              >
+                <li class="seat-map__legend-item">
+                  <span
+                    class="seat-map__legend-swatch seat-map__legend-swatch--or"
+                    aria-hidden="true"
+                  ></span>
+                  Carré Or — environ 45 €
+                </li>
+                <li class="seat-map__legend-item">
+                  <span
+                    class="seat-map__legend-swatch seat-map__legend-swatch--argent"
+                    aria-hidden="true"
+                  ></span>
+                  Carré Argent — environ 35 €
+                </li>
+                <li class="seat-map__legend-item">
+                  <span
+                    class="seat-map__legend-swatch seat-map__legend-swatch--basique"
+                    aria-hidden="true"
+                  ></span>
+                  Basique — environ 28 €
+                </li>
+                <li class="seat-map__legend-item">
+                  <span
+                    class="seat-map__legend-swatch seat-map__legend-swatch--pmr"
+                    aria-hidden="true"
+                  ></span>
+                  PMR — environ 28 €
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -391,10 +427,12 @@
     <div id="footer"></div>
 
     <!-- header.js, index-programmation.js, and infos.js are all loaded BEFORE jQuery here -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/header.js"></script>
     <script src="/js/index-programmation.js"></script>
     <script src="/js/infos.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/plan-salle.js"></script>
+
     <script>
       $("#header").load("/pages/header.html");
       $("#footer").load("/pages/footer.html");

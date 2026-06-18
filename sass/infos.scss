@@ -409,3 +409,152 @@
     gap: 1.6rem;
   }
 }
+/* ── Plan de salle (seat map) ── */
+.seat-map {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--bg-nav);
+  border-radius: 10px;
+  padding: 2.5rem 2rem 2rem;
+  position: relative; // anchors the tooltip's absolute positioning
+}
+
+.seat-map__stage {
+  background: color-mix(in srgb, var(--text-white) 12%, transparent);
+  color: var(--text-white);
+  text-align: center;
+  font-family: "playfair", serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin-bottom: 2.5rem;
+}
+
+.seat-map__rows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.seat-map__row {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.seat-map__seat {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s;
+
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.25);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--text-white);
+    outline-offset: 2px;
+  }
+
+  &--or {
+    background: var(--gold);
+  }
+
+  &--argent {
+    background: #c3c9d1;
+  }
+
+  &--basique {
+    background: color-mix(in srgb, var(--text-white) 30%, transparent);
+  }
+
+  &--pmr {
+    background: #4a90d9;
+  }
+}
+
+.seat-map__tooltip {
+  position: absolute;
+  transform: translate(-50%, -130%);
+  background: var(--text-white);
+  color: var(--bg-nav);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.4rem 0.7rem;
+  border-radius: 5px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--text-white);
+  }
+}
+
+.seat-map__legend {
+  list-style: none;
+  margin: 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--text-white) 15%, transparent);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.seat-map__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-white);
+}
+
+.seat-map__legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  display: inline-block;
+
+  &--or {
+    background: var(--gold);
+  }
+
+  &--argent {
+    background: #c3c9d1;
+  }
+
+  &--basique {
+    background: color-mix(in srgb, var(--text-white) 30%, transparent);
+  }
+
+  &--pmr {
+    background: #4a90d9;
+  }
+}
+
+/* Mobile: shrink seats and gaps so the widest rows (14 seats) still fit without horizontal scroll */
+@media (max-width: 600px) {
+  .seat-map__seat {
+    width: 13px;
+    height: 13px;
+  }
+
+  .seat-map__row {
+    gap: 0.25rem;
+  }
+}
