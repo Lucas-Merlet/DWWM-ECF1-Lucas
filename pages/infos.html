@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.min.css" />
+  </head>
+  <body class="infos-page">
+    <div id="header"></div>
+    <div class="page-header">
+      <h1>Infos pratiques</h1>
+      <p>Tout ce qu'il faut savoir pour votre venue</p>
+    </div>
+
+    <!-- ══ TABS ══ -->
+    <div class="tabs-bar">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="acces">
+          <svg viewBox="0 0 24 24">
+            <rect x="4" y="3" width="16" height="14" rx="2" />
+            <line x1="4" y1="11" x2="20" y2="11" />
+            <circle cx="8" cy="14.5" r="0.5" />
+            <circle cx="16" cy="14.5" r="0.5" />
+            <path d="M8 17l-2 4M16 17l2 4" />
+          </svg>
+          Accès
+        </button>
+        <button class="tab-btn" data-tab="tarifs">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9" />
+            <line x1="12" y1="7" x2="12" y2="17" />
+            <path
+              d="M9.5 9.5a2.5 2.5 0 0 1 2.5-1.5 2.5 2.5 0 0 1 0 5h-1a2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 2.5-1.5"
+            />
+          </svg>
+          Tarifs
+        </button>
+        <button class="tab-btn" data-tab="services">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2l2.5 5.5L20 9l-4.5 4 1 5.5L12 16l-4.5 2.5 1-5.5L4 9l5.5-1.5z"
+            />
+          </svg>
+          Services
+        </button>
+        <button class="tab-btn" data-tab="accessibilite">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="4" r="1.5" />
+            <path d="M12 7v5l4 3M12 12l-4 3M12 12v9" />
+            <path d="M7 9h10" />
+          </svg>
+          Accessibilité
+        </button>
+        <button class="tab-btn" data-tab="plan">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="16" rx="1" />
+            <line x1="3" y1="9" x2="21" y2="9" />
+            <line x1="8" y1="9" x2="8" y2="20" />
+            <line x1="16" y1="9" x2="16" y2="20" />
+          </svg>
+          Plan de salle
+        </button>
+      </div>
+    </div>
+
+    <!-- ══ TAB: ACCÈS ══ -->
+    <div class="tab-panel active" id="panel-acces">
+      <div class="panel-inner">
+        <div class="access-layout">
+          <div class="access-info">
+            <h2>Nous trouver</h2>
+
+            <div class="access-block">
+              <h3>Le Phosphore</h3>
+              <p>15 Rue des Arts<br />75001 Paris</p>
+            </div>
+
+            <div class="access-block">
+              <h3>Métro</h3>
+              <p>
+                Ligne 1 – Station Châtelet (à 3 min à pied)<br />Lignes 4, 7,
+                11, 14 – Station Châtelet
+              </p>
+            </div>
+
+            <div class="access-block">
+              <h3>Bus</h3>
+              <p>Lignes 29, 38, 47, 74, 85</p>
+            </div>
+
+            <div class="access-block">
+              <h3>Parking</h3>
+              <p>Parking Les Halles – 99 Rue Berger (à 5 min à pied)</p>
+            </div>
+
+            <a
+              href="https://www.google.com/maps?q=15+Rue+des+Arts,75001+Paris"
+              target="_blank"
+              class="btn-bordeaux"
+              >Voir sur plan</a
+            >
+          </div>
+
+          <div class="map-embed">
+            <!-- Remplace le q= par ta vraie adresse, ou utilise une clé API Google Maps pour un embed personnalisé -->
+            <iframe
+              src="https://www.google.com/maps?q=Ch%C3%A2telet,Paris&output=embed"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ TAB: TARIFS ══ -->
+    <div class="tab-panel" id="panel-tarifs">
+      <div class="panel-inner">
+        <h2
+          style="
+            font-family: &quot;EB Garamond&quot;, serif;
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 1.6rem;
+          "
+        >
+          Nos tarifs
+        </h2>
+        <div class="tarifs-grid">
+          <div class="tarif-card">
+            <h3>Plein tarif</h3>
+            <div class="price">28€</div>
+            <p>
+              Tarif standard pour tous les spectacles, hors événements
+              exceptionnels.
+            </p>
+          </div>
+          <div class="tarif-card">
+            <h3>Tarif réduit</h3>
+            <div class="price">20€</div>
+            <p>
+              Étudiants, demandeurs d'emploi, moins de 26 ans (sur présentation
+              d'un justificatif).
+            </p>
+          </div>
+          <div class="tarif-card">
+            <h3>Carte fidélité</h3>
+            <div class="price">15€ <span>/place</span></div>
+            <p>
+              À partir de 5 spectacles réservés sur la saison. Avantages
+              exclusifs inclus.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ TAB: SERVICES ══ -->
+    <div class="tab-panel" id="panel-services">
+      <div class="panel-inner">
+        <h2
+          style="
+            font-family: &quot;EB Garamond&quot;, serif;
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 1.6rem;
+          "
+        >
+          Nos services
+        </h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M3 10h18M5 6h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"
+                />
+              </svg>
+            </div>
+            <h3>Vestiaire</h3>
+            <p>
+              Un vestiaire gratuit est à votre disposition à l'entrée de la
+              salle.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M6 3h12l2 6-8 12L4 9z" /></svg>
+            </div>
+            <h3>Bar &amp; restauration</h3>
+            <p>
+              Un bar est ouvert avant chaque représentation et pendant
+              l'entracte.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="5" y="2" width="14" height="20" rx="2" />
+                <line x1="12" y1="18" x2="12" y2="18" />
+              </svg>
+            </div>
+            <h3>Billetterie en ligne</h3>
+            <p>
+              Réservez et payez vos places directement depuis notre site, à tout
+              moment.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M9 10s.5-2 3-2 3 2 3 2" />
+              </svg>
+            </div>
+            <h3>Accueil groupes</h3>
+            <p>
+              Tarifs et accompagnement dédiés pour les groupes à partir de 10
+              personnes.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="7" width="20" height="14" rx="2" />
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+              </svg>
+            </div>
+            <h3>Boutique</h3>
+            <p>
+              Affiches, goodies et produits de nos artistes disponibles sur
+              place.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2a3 3 0 0 1 3 3v4a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"
+                />
+                <path d="M19 10a7 7 0 0 1-14 0" />
+                <line x1="12" y1="17" x2="12" y2="22" />
+              </svg>
+            </div>
+            <h3>Espace privatisable</h3>
+            <p>
+              Organisez vos événements professionnels ou privés dans notre
+              salle.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ TAB: ACCESSIBILITÉ ══ -->
+    <div class="tab-panel" id="panel-accessibilite">
+      <div class="panel-inner">
+        <h2
+          style="
+            font-family: &quot;EB Garamond&quot;, serif;
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 1.6rem;
+          "
+        >
+          Accessibilité
+        </h2>
+        <div class="accessibility-list">
+          <div class="accessibility-item">
+            <div class="accessibility-item__icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="4" r="1.5" />
+                <path d="M12 7v5l4 3M12 12l-4 3M12 12v9" />
+              </svg>
+            </div>
+            <div>
+              <h3>Accès fauteuil roulant</h3>
+              <p>
+                La salle dispose de places réservées et d'un accès de plain-pied
+                depuis l'entrée principale.
+              </p>
+            </div>
+          </div>
+          <div class="accessibility-item">
+            <div class="accessibility-item__icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                <path
+                  d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"
+                />
+              </svg>
+            </div>
+            <div>
+              <h3>Boucle magnétique</h3>
+              <p>
+                Un système de boucle magnétique est disponible pour les
+                personnes malentendantes équipées d'appareils compatibles.
+              </p>
+            </div>
+          </div>
+          <div class="accessibility-item">
+            <div class="accessibility-item__icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <line x1="8" y1="12" x2="16" y2="12" />
+                <line x1="12" y1="8" x2="12" y2="16" />
+              </svg>
+            </div>
+            <div>
+              <h3>Sanitaires adaptés</h3>
+              <p>
+                Des toilettes accessibles sont disponibles à chaque niveau de la
+                salle.
+              </p>
+            </div>
+          </div>
+          <div class="accessibility-item">
+            <div class="accessibility-item__icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5.2 12.9 19.8 19.8 0 0 1 2.12 4.3 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.81.34 1.6.64 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.3 1.53.52 2.34.64A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+            </div>
+            <div>
+              <h3>Accueil personnalisé</h3>
+              <p>
+                Contactez-nous avant votre venue pour préparer un accompagnement
+                adapté à vos besoins.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ TAB: PLAN DE SALLE ══ -->
+    <div class="tab-panel" id="panel-plan">
+      <div class="panel-inner">
+        <h2
+          style="
+            font-family: &quot;EB Garamond&quot;, serif;
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 1.6rem;
+          "
+        >
+          Plan de salle
+        </h2>
+        <div class="plan-wrap">
+          <div class="plan-placeholder">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="16" rx="1" />
+              <line x1="3" y1="9" x2="21" y2="9" />
+              <line x1="8" y1="9" x2="8" y2="20" />
+              <line x1="16" y1="9" x2="16" y2="20" />
+            </svg>
+            <p>
+              Le plan de salle interactif sera bientôt disponible ici.<br />Remplace
+              ce bloc par ton image ou ton plan SVG/interactif.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer"></div>
+
+    <script src="/js/header.js"></script>
+    <script src="/js/index-programmation.js"></script>
+    <script src="/js/infos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      $("#header").load("/pages/header.html");
+      $("#footer").load("/pages/footer.html");
+    </script>
+  </body>
+</html>

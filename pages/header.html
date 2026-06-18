@@ -1,0 +1,10 @@
+<header>
+  <div id="navbar"></div>
+
+  <script>
+    $("#navbar").load("/pages/navbar.html", function () {
+      // Ce callback ne s'exécute qu'une fois le HTML de la navbar réellement injecté
+      highlightCurrentPage();
+    });
+  </script>
+</header>

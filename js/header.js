@@ -1,81 +1,33 @@
-class NavBar extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
-      <header>
-        <nav class="navbar" aria-label="Navigation principale">
-          <a class="nav-brand" href="/index.html" aria-label="Le Phosphore – Accueil">
-            <div class="nav-logo" aria-hidden="true">
-              <img src="/img/picto-removebg-preview.png" alt="" class="nav-logo"/>
-            </div>
-            <div class="nav-brand-text">
-              <span class="nav-brand-name">Le Phosphore</span>
-              <span class="nav-brand-sub">Salle de spectacles</span>
-            </div>
-          </a>
+// Animation du bouton burger (délégation : fonctionne même si le HTML est injecté plus tard)
+$(document).on("click", ".nav-toggle", function () {
+  const $toggle = $(this);
+  const $mobileMenu = $("#mobile-menu");
+  const isOpen = $mobileMenu.toggleClass("open").hasClass("open");
+  $toggle.toggleClass("open", isOpen);
+  $toggle.attr("aria-expanded", isOpen);
+});
 
-          <ul class="nav-links" role="list">
-            <li><a href="/index.html">Accueil</a></li>
-            <li><a href="/pages/programmation.html">Programmation</a></li>
-            <li><a href="/pages/infos.html">Infos pratiques</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-          </ul>
+// Ferme le menu mobile quand on clique sur un lien
+$(document).on("click", ".nav-mobile a", function () {
+  $("#mobile-menu").removeClass("open");
+  $(".nav-toggle").removeClass("open").attr("aria-expanded", false);
+});
 
-          <a href="/pages/billetterie.html" class="nav-cta">Billetterie</a>
+// Met en surbrillance le lien de la page actuelle
+function highlightCurrentPage() {
+  const currentFile = window.location.pathname.split("/").pop() || "index.html";
 
-          <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </nav>
+  $(".nav-links a, .nav-mobile a").each(function () {
+    const $link = $(this);
+    const linkFile = $link.attr("href").split("/").pop();
+    const isActive = linkFile === currentFile;
 
-        <nav class="nav-mobile" id="mobile-menu" aria-label="Menu mobile">
-          <a href="/index.html">Accueil</a>
-          <a href="/pages/programmation.html">Programmation</a>
-          <a href="/pages/infos.html">Infos pratiques</a>
-          <a href="/pages/contact.html">Contact</a>
-          <a href="/pages/billetterie.html" class="nav-cta-mobile">Billetterie</a>
-        </nav>
-      </header>
-    `;
+    $link.toggleClass("active", isActive);
 
-    const toggle = this.querySelector(".nav-toggle");
-    const mobileMenu = this.querySelector("#mobile-menu");
-
-    toggle.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.toggle("open");
-      toggle.classList.toggle("open", isOpen);
-      toggle.setAttribute("aria-expanded", isOpen);
-    });
-
-    this.querySelectorAll(".nav-mobile a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
-        toggle.classList.remove("open");
-        toggle.setAttribute("aria-expanded", false);
-      });
-    });
-
-    this.highlightCurrentPage();
-  }
-
-  highlightCurrentPage() {
-    const currentFile =
-      window.location.pathname.split("/").pop() || "index.html";
-
-    this.querySelectorAll(".nav-links a, .nav-mobile a").forEach((link) => {
-      const linkFile = link.getAttribute("href").split("/").pop();
-      const isActive = linkFile === currentFile;
-
-      link.classList.toggle("active", isActive);
-
-      if (isActive) {
-        link.setAttribute("aria-current", "page");
-      } else {
-        link.removeAttribute("aria-current");
-      }
-    });
-  }
+    if (isActive) {
+      $link.attr("aria-current", "page");
+    } else {
+      $link.removeAttr("aria-current");
+    }
+  });
 }
-
-customElements.define("nav-bar", NavBar);

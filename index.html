@@ -8,7 +8,7 @@
   </head>
   <body>
     <section class="hero">
-      <nav-bar></nav-bar>
+      <div id="header"></div>
 
       <div class="hero__text">
         <div class="hero-1">
@@ -19,7 +19,9 @@
         <div>
           <div class="hero-theme">Une scène, toutes les émotions</div>
           <div>
-            <a><button class="hero-button">VOIR LA PROGRAMMATION</button></a>
+            <a href="/pages/programmation.html" class="hero-button"
+              >VOIR LA PROGRAMMATION</a
+            >
           </div>
         </div>
       </div>
@@ -47,7 +49,7 @@
           </li>
           <li>
             <img
-              src="/img/favicon_io/music-svgrepo-com 1.svg"
+              src="/img/favicon_io/music-svgrepo-com-1.svg"
               alt=""
               class="bio-feature-icon"
             />
@@ -56,7 +58,7 @@
           </li>
           <li>
             <img
-              src="/img/favicon_io/micro-svgrepo-com 1.svg"
+              src="/img/favicon_io/micro-svgrepo-com-1.svg"
               alt=""
               class="bio-feature-icon"
             />
@@ -79,9 +81,14 @@
       </div>
       <div class="programmation__grid" id="programmation-grid"></div>
     </section>
-    <footer-bar></footer-bar>
+    <div id="footer"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/header.js"></script>
-    <script src="/js/footer.js"></script>
     <script src="/js/index-programmation.js"></script>
+    <script>
+      $("#header").load("/pages/header.html");
+      $("#footer").load("/pages/footer.html");
+    </script>
   </body>
 </html>

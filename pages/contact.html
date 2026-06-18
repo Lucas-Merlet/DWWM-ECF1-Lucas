@@ -8,7 +8,7 @@
     <script src="/js/header.js"></script>
   </head>
   <body class="info-contact">
-    <nav-bar></nav-bar>
+    <div id="header"></div>
     <div class="contact">
       <div class="contact__bg"></div>
       <div class="contact__fade"></div>
@@ -142,5 +142,10 @@
         </div>
       </div>
     </div>
+    <script src="/js/header.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      $("#header").load("/pages/header.html");
+    </script>
   </body>
 </html>

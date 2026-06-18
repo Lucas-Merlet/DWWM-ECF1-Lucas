@@ -1,47 +1,125 @@
+// ═══════════════════════════════════════════════
+// MIXIN RESPONSIVE — point d'entrée unique pour les breakpoints
+// Usage : @include respond(tablet) { ... } ou @include respond(mobile) { ... }
+// ═══════════════════════════════════════════════
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+}
+
 .hero {
   background-image: url("/img/scene-principale.png");
-  background-size: cover; /* remplit toute la zone sans déformer */
-  background-repeat: no-repeat; /* évite la répétition */
+  background-size: cover;
+  background-repeat: no-repeat;
   background-position: right;
 
   &__text {
     display: flex;
     flex-direction: column;
-    align-items: center; /* centrage horizontal */
-    justify-content: center; /* centrage vertical */
+    align-items: center;
+    justify-content: center;
     text-align: center;
     min-height: 100vh;
+    padding: 0 1.5rem;
+  }
+
+  @include respond(mobile) {
+    background-position: center;
   }
 }
 
 .hero-title {
+  font-family: "playfair";
   font-size: 96px;
+
+  @include respond(tablet) {
+    font-size: 64px;
+  }
+
+  @include respond(mobile) {
+    font-size: 40px;
+  }
 }
 
 .hero-theme {
+  font-family: "playfair";
   font-size: 32px;
   text-transform: uppercase;
   margin-bottom: 10px;
+
+  @include respond(tablet) {
+    font-size: 22px;
+  }
+
+  @include respond(mobile) {
+    font-size: 16px;
+  }
 }
 
 .hero-1 {
   margin-bottom: 80px;
+
+  @include respond(tablet) {
+    margin-bottom: 50px;
+  }
+
+  @include respond(mobile) {
+    margin-bottom: 32px;
+  }
 }
 
 hr {
   height: 2px;
   width: 10%;
-  background-color: #d4a843;
+  background-color: var(--gold);
   margin-bottom: 80px;
-  border: #d4a843;
+  border: none;
+
+  @include respond(tablet) {
+    margin-bottom: 50px;
+  }
+
+  @include respond(mobile) {
+    width: 20%;
+    margin-bottom: 32px;
+  }
 }
 
 .hero-button {
   background-color: var(--gold);
+  color: var(--bg-nav);
+  font-family: "lato";
   margin-top: 10px;
   padding: 10px 100px;
   border-radius: 50px;
+  border: none;
   cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--text-red);
+    color: var(--text-white);
+  }
+
+  @include respond(tablet) {
+    padding: 10px 60px;
+  }
+
+  @include respond(mobile) {
+    padding: 12px 32px;
+    width: 100%;
+    max-width: 320px;
+  }
 }
 
 .bio {
@@ -67,14 +145,14 @@ hr {
 
     hr {
       border: none;
-      border-top: 1px solid rgba(42, 45, 52, 0.15);
+      border-top: 1px solid color-mix(in srgb, var(--bg-nav) 15%, transparent);
     }
 
     > p {
-      font-family: "playfair";
+      font-family: "lato";
       font-size: 0.875rem;
       line-height: 1.75;
-      color: rgba(42, 45, 52, 0.75);
+      color: color-mix(in srgb, var(--bg-nav) 75%, transparent);
     }
   }
 
@@ -114,9 +192,9 @@ hr {
     }
 
     p {
-      font-family: "playfair";
+      font-family: "lato";
       font-size: 20px !important;
-      color: rgba(42, 45, 52, 0.55);
+      color: color-mix(in srgb, var(--bg-nav) 55%, transparent);
       line-height: 1.4;
     }
   }
@@ -144,15 +222,64 @@ hr {
     margin-bottom: 20px;
   }
 
-  @media (max-width: 760px) {
+  @include respond(tablet) {
     grid-template-columns: 1fr;
 
-    &-img {
-      min-height: 260px;
+    &-info {
+      padding: 2.5rem 2rem 2rem;
+
+      h2 {
+        font-size: 32px;
+      }
     }
 
-    &-info h2 {
-      font-size: 1.9rem;
+    &-feature-icon {
+      width: 72px;
+      height: 72px;
+    }
+
+    &-img {
+      min-height: 320px;
+    }
+  }
+
+  @include respond(mobile) {
+    &-info {
+      padding: 2rem 1.5rem;
+
+      h2 {
+        font-size: 26px;
+      }
+    }
+
+    &-title {
+      font-size: 20px !important;
+    }
+
+    &-features {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+
+      h3 {
+        font-size: 18px !important;
+      }
+
+      p {
+        font-size: 15px !important;
+      }
+    }
+
+    &-feature-icon {
+      width: 56px;
+      height: 56px;
+    }
+
+    &-img {
+      min-height: 240px;
+    }
+
+    &-text {
+      font-size: 16px !important;
     }
   }
 }
@@ -170,13 +297,16 @@ hr {
   }
 
   &__title {
+    font-family: "playfair";
     font-size: 32px;
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
+    color: var(--text-white);
   }
 
   &__link {
+    font-family: "lato";
     font-size: 0.875rem;
     font-weight: 500;
     text-decoration: none;
@@ -195,19 +325,35 @@ hr {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+  }
 
-    @media (max-width: 900px) {
-      grid-template-columns: repeat(2, 1fr);
+  @include respond(tablet) {
+    padding: 2.5rem 1.5rem;
+
+    &__title {
+      font-size: 1.6rem;
     }
 
-    @media (max-width: 520px) {
-      grid-template-columns: 1fr;
+    &__grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media (max-width: 520px) {
+  @include respond(mobile) {
+    padding: 2rem 1.25rem;
+
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
     &__title {
       font-size: 1.3rem;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
     }
   }
 }
@@ -256,6 +402,7 @@ hr {
     position: absolute;
     bottom: 0.75rem;
     left: 0.75rem;
+    font-family: "lato";
     font-size: 0.6rem;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -276,6 +423,7 @@ hr {
   }
 
   &__name {
+    font-family: "playfair";
     font-size: 1.05rem;
     font-weight: 700;
     letter-spacing: 0.03em;
@@ -286,6 +434,7 @@ hr {
   }
 
   &__date {
+    font-family: "lato";
     font-size: 0.8rem;
     font-weight: 400;
     letter-spacing: 0.05em;
@@ -293,7 +442,6 @@ hr {
     color: var(--text-white);
   }
 
-  /* ── Jauge de places restantes ── */
   &__capacity {
     padding: 0.75rem 1.1rem 0;
     display: flex;
@@ -308,6 +456,7 @@ hr {
   }
 
   &__capacity-text {
+    font-family: "lato";
     font-size: 0.68rem;
     font-weight: 500;
     letter-spacing: 0.05em;
@@ -317,6 +466,7 @@ hr {
   }
 
   &__capacity-count {
+    font-family: "lato";
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -333,7 +483,7 @@ hr {
   &__capacity-bar {
     height: 4px;
     border-radius: 99px;
-    background: rgba(255, 255, 255, 0.1);
+    background: color-mix(in srgb, var(--text-white) 10%, transparent);
     overflow: hidden;
   }
 
@@ -351,7 +501,6 @@ hr {
     }
   }
 
-  /* ── Bouton "en savoir plus" + texte déroulant ── */
   &__footer {
     padding: 0.9rem 1.1rem 1rem;
   }
@@ -359,9 +508,9 @@ hr {
   &__btn-info {
     width: 100%;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid color-mix(in srgb, var(--text-white) 20%, transparent);
     color: var(--text-white);
-    font-family: inherit;
+    font-family: "lato";
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -375,12 +524,13 @@ hr {
 
     &:hover,
     &:focus-visible {
-      border-color: var(--gold);
-      color: var(--gold);
+      border-color: var(--text-red);
+      color: var(--text-red);
     }
   }
 
   &__description {
+    font-family: "lato";
     padding: 0 1.1rem 1.1rem;
     font-size: 0.8rem;
     line-height: 1.5;
@@ -389,6 +539,28 @@ hr {
 
     &[hidden] {
       display: none;
+    }
+  }
+
+  @include respond(mobile) {
+    &__name {
+      font-size: 0.95rem;
+    }
+
+    &__body {
+      padding: 0.85rem 0.9rem 0;
+    }
+
+    &__capacity {
+      padding: 0.65rem 0.9rem 0;
+    }
+
+    &__footer {
+      padding: 0.8rem 0.9rem 0.9rem;
+    }
+
+    &__description {
+      padding: 0 0.9rem 0.9rem;
     }
   }
 }
