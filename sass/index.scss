@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════
-// MIXIN RESPONSIVE — point d'entrée unique pour les breakpoints
-// Usage : @include respond(tablet) { ... } ou @include respond(mobile) { ... }
+// RESPONSIVE MIXIN — single entry point for breakpoints
+// Usage: @include respond(tablet) { ... } or @include respond(mobile) { ... }
 // ═══════════════════════════════════════════════
 @mixin respond($breakpoint) {
   @if $breakpoint == tablet {
@@ -14,6 +14,7 @@
   }
 }
 
+// ── Hero section: full-height intro banner ──
 .hero {
   background-image: url("/img/scene-principale.png");
   background-size: cover;
@@ -122,6 +123,7 @@ hr {
   }
 }
 
+// ── Bio section: two-column intro about the venue ──
 .bio {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -284,6 +286,7 @@ hr {
   }
 }
 
+// ── Programmation section: "upcoming events" grid on the homepage ──
 .programmation {
   margin: 0 auto;
   padding: 3rem 2rem;
@@ -358,6 +361,7 @@ hr {
   }
 }
 
+// ── Event card component: used on both the homepage and the Programmation page ──
 .event-card {
   background: var(--bg-nav);
   border: 2px solid var(--text-red);
@@ -442,6 +446,7 @@ hr {
     color: var(--text-white);
   }
 
+  // ── Remaining-capacity gauge ──
   &__capacity {
     padding: 0.75rem 1.1rem 0;
     display: flex;
@@ -501,6 +506,7 @@ hr {
     }
   }
 
+  // ── "Learn more" toggle button + expandable description ──
   &__footer {
     padding: 0.9rem 1.1rem 1rem;
   }

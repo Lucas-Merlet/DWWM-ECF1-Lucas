@@ -1,10 +1,12 @@
+// Holds the full unfiltered dataset once loaded, and the current filter state
 let allProjets = [];
 const activeFilters = {
   type: "tous",
-  date: null,
+  day: null,
   disponibleOnly: false,
 };
 
+// Same labels and capacity logic duplicated again from index-programmation.js / fiche-programmation.js
 const badgeLabels = {
   theatre: "Théâtre",
   concert: "Concert",
@@ -16,13 +18,14 @@ function getCapacityTier(remaining) {
   return { tier: "limited", label: "Places disponibles" };
 }
 
+// Identical to createCard() in index-programmation.js — third copy of the same function in the project
 function createCard(projet) {
   const card = document.createElement("div");
   card.classList.add("event-card");
 
   const link = document.createElement("a");
   link.classList.add("event-card__link");
-  link.href = `/assets/pages/fiche-projets.html?id=${projet.id}`;
+  link.href = `/pages/fiche-programmation.html?id=${projet.id}`;
 
   const imageWrap = document.createElement("div");
   imageWrap.classList.add("event-card__image-wrap");
@@ -131,17 +134,21 @@ function createCard(projet) {
   return card;
 }
 
+// Applies all three active filters (category, day, availability) to the full dataset
 function getFilteredProjets() {
   return allProjets.filter((projet) => {
+    // Category filter: skip if a specific type is selected and this show doesn't match
     if (activeFilters.type !== "tous" && projet.type !== activeFilters.type) {
       return false;
     }
 
-    if (activeFilters.date) {
-      const projetDate = projet.date.slice(0, 10);
-      if (projetDate !== activeFilters.date) return false;
+    // Day filter: skip if a day is selected and this show's date doesn't fall on it
+    if (activeFilters.day !== null) {
+      const projetDay = new Date(projet.date).getDay();
+      if (projetDay !== activeFilters.day) return false;
     }
 
+    // Availability filter: skip sold-out shows when "Disponible uniquement" is active
     if (activeFilters.disponibleOnly) {
       const remaining = projet.places_total - projet.places_vendues;
       if (remaining <= 0) return false;
@@ -151,12 +158,14 @@ function getFilteredProjets() {
   });
 }
 
+// Clears and re-renders the events grid based on the current filter state
 function renderCards() {
   const cardsContainer = document.getElementById("eventsGrid");
   cardsContainer.innerHTML = "";
 
   const filtered = getFilteredProjets();
 
+  // Empty state message when no shows match the current filter combination
   if (filtered.length === 0) {
     const empty = document.createElement("p");
     empty.classList.add("programmation__empty");
@@ -170,7 +179,9 @@ function renderCards() {
   });
 }
 
+// Wires up all three filter button groups (category, day, availability) to update state and re-render
 function initFilters() {
+  // Category filters: single-select, only one .active at a time
   const typeButtons = document.querySelectorAll(".filter-btn[data-filter]");
   typeButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -181,12 +192,35 @@ function initFilters() {
     });
   });
 
-  const dateInput = document.getElementById("dateFilter");
-  dateInput.addEventListener("change", () => {
-    activeFilters.date = dateInput.value || null;
-    renderCards();
+  // Day filters: single-select with toggle-off behavior (clicking the active day deselects it)
+  const dayButtons = document.querySelectorAll(
+    ".filter-days .filter-btn[data-day]",
+  );
+  dayButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const day = Number(btn.dataset.day);
+      const wasActive = btn.classList.contains("active");
+
+      // Reset all day buttons first, since only one can be active at a time
+      dayButtons.forEach((b) => {
+        b.classList.remove("active");
+        b.setAttribute("aria-pressed", "false");
+      });
+
+      if (wasActive) {
+        // Clicking the already-active day clears the filter entirely
+        activeFilters.day = null;
+      } else {
+        btn.classList.add("active");
+        btn.setAttribute("aria-pressed", "true");
+        activeFilters.day = day;
+      }
+
+      renderCards();
+    });
   });
 
+  // Availability toggle: independent on/off switch, doesn't affect the other filter groups
   const dispoBtn = document.getElementById("dispoFilterBtn");
   dispoBtn.addEventListener("click", () => {
     activeFilters.disponibleOnly = !activeFilters.disponibleOnly;
@@ -196,6 +230,7 @@ function initFilters() {
   });
 }
 
+// Load the data once, then render the initial grid and wire up the filters
 fetch("/spectacles.json")
   .then((response) => response.json())
   .then((data) => {

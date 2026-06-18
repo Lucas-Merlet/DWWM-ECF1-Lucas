@@ -1,0 +1,338 @@
+// Mixin for responsive breakpoints, used throughout this component instead of repeating raw media queries
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+}
+
+// Single show detail page (image, title, description, capacity gauge, booking CTA, practical info)
+.fiche-spectacle {
+  background: var(--bg-nav);
+  color: var(--text-white);
+  font-family: "lato";
+  padding: 2.5rem 3rem 4rem;
+
+  // "Back" link to return to the programmation listing
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+    transition: color 0.2s;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--text-white);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.2s;
+    }
+
+    // Gold hover state on both text and icon
+    &:hover {
+      color: var(--gold);
+
+      svg {
+        stroke: var(--gold);
+      }
+    }
+  }
+
+  // Two-column layout: image on one side, show details on the other
+  &__main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  // Image container with fixed aspect ratio so the layout stays stable regardless of source image size
+  &__image-wrap {
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  // Category badge (e.g. "Théâtre", "Concert") shown above the title
+  &__badge {
+    display: inline-block;
+    background: var(--text-red);
+    color: var(--text-white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 1.2rem;
+  }
+
+  // Show title
+  &__title {
+    font-family: "playfair";
+    font-size: 2.8rem;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  // Container for the metadata list (date, time, venue, etc.)
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin-bottom: 1.8rem;
+  }
+
+  // Single metadata row, icon + text
+  &__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      stroke: var(--text-white);
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+
+  // Show synopsis/description, slightly transparent white for visual hierarchy below the title
+  &__description {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 480px;
+    color: color-mix(in srgb, var(--text-white) 85%, transparent);
+    margin-bottom: 2rem;
+  }
+
+  // Wrapper for the ticket capacity gauge (label + bar)
+  &__capacity {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 380px;
+    margin-bottom: 2rem;
+  }
+
+  // Row holding the "places restantes" label and the count, spaced apart
+  &__capacity-label {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  // Static label text (e.g. "PLACES DISPONIBLES")
+  &__capacity-text {
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.65;
+  }
+
+  // Numeric count, color-coded by urgency
+  &__capacity-count {
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    // Gold when stock is getting low
+    &--limited {
+      color: var(--gold);
+    }
+
+    // Red when stock is critically low
+    &--scarce {
+      color: var(--text-red);
+    }
+  }
+
+  // Track of the capacity gauge
+  &__capacity-bar {
+    height: 5px;
+    border-radius: 99px;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--text-white) 10%, transparent);
+  }
+
+  // Filled portion of the gauge, width set dynamically via JS, color matches the count state
+  &__capacity-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.6s ease;
+
+    &--limited {
+      background: var(--gold);
+    }
+
+    &--scarce {
+      background: var(--text-red);
+    }
+  }
+
+  // Main booking button
+  &__cta {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--bg-nav);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2.5rem;
+    border-radius: 6px;
+    transition:
+      background 0.2s,
+      color 0.2s;
+
+    &:hover {
+      background: var(--text-red);
+      color: var(--text-white);
+    }
+
+    // State for sold-out shows: dimmed and non-interactive
+    &--disabled {
+      background: color-mix(in srgb, var(--text-white) 20%, transparent);
+      color: color-mix(in srgb, var(--text-white) 50%, transparent);
+      pointer-events: none;
+    }
+  }
+
+  // Faint horizontal rule separating the main info block from the practical info section
+  &__divider {
+    border: none;
+    border-top: 1px solid color-mix(in srgb, var(--text-white) 12%, transparent);
+    margin: 3rem 0 2.5rem;
+  }
+
+  // "Infos pratiques" section heading
+  &__practical {
+    h2 {
+      font-family: "playfair";
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 1.8rem;
+    }
+  }
+
+  // 4-column grid for practical info blocks (e.g. address, duration, accessibility, contact)
+  &__practical-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  // Single practical info block, separated from its neighbor by a vertical divider
+  &__practical-block {
+    border-left: 1px solid
+      color-mix(in srgb, var(--text-white) 12%, transparent);
+    padding-left: 1.5rem;
+
+    // No divider before the first block in the row
+    &:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+
+      svg {
+        width: 16px;
+        height: 16px;
+        stroke: var(--gold);
+        fill: none;
+        stroke-width: 1.8;
+      }
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: color-mix(in srgb, var(--text-white) 75%, transparent);
+    }
+  }
+
+  // Tablet: switch to single-column main layout, shrink title, collapse practical grid to 2 columns
+  @include respond(tablet) {
+    padding: 2rem 1.5rem 3rem;
+
+    &__main {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    &__title {
+      font-size: 2.2rem;
+    }
+
+    &__practical-grid {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 2rem;
+    }
+
+    // With 2 columns, odd-positioned blocks start a new row, so they lose their left divider too
+    &__practical-block:nth-child(odd) {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+
+  // Mobile: full-width CTA, single-column practical grid with horizontal dividers instead of vertical
+  @include respond(mobile) {
+    &__title {
+      font-size: 1.7rem;
+    }
+
+    &__cta {
+      width: 100%;
+      text-align: center;
+    }
+
+    &__practical-grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__practical-block {
+      border-left: none !important;
+      padding-left: 0 !important;
+      border-top: 1px solid
+        color-mix(in srgb, var(--text-white) 12%, transparent);
+      padding-top: 1.2rem;
+
+      &:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+    }
+  }
+}

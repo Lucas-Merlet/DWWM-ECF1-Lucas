@@ -1,4 +1,5 @@
 /* ── Footer ─────────────────────────────────────────── */
+// Outer footer wrapper, no bottom padding since .footer-bottom handles its own spacing
 .footer {
   background: var(--bg-nav);
   color: var(--text-white);
@@ -6,15 +7,17 @@
   padding: 64px 40px 0;
 }
 
+// Top section: 4-column grid (brand / links / socials / newsletter), separated from the bottom bar by a border
 .footer-main {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
   gap: 48px;
   padding-bottom: 56px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--text-white);
 }
 
 /* Brand */
+// Logo + brand name, clickable link (likely back to homepage)
 .footer-logo-link {
   display: flex;
   align-items: center;
@@ -29,6 +32,7 @@
   object-fit: contain;
 }
 
+// Stacks the brand name and tagline vertically next to the logo
 .footer-brand-text {
   display: flex;
   flex-direction: column;
@@ -41,6 +45,7 @@
   letter-spacing: 0.08em;
 }
 
+// Small gold tagline under the brand name (e.g. "THÉÂTRE . CONCERTS . STAND-UP")
 .footer-brand-sub {
   color: var(--gold);
   font-size: 0.7rem;
@@ -48,14 +53,16 @@
   margin-top: 2px;
 }
 
+// Short venue description paragraph under the brand block
 .footer-desc {
   font-size: 0.9rem;
   line-height: 1.7;
-  color: rgba(245, 240, 232, 0.5);
+  color: var(--text-white);
   margin: 0;
 }
 
 /* Colonnes */
+// Shared heading style for each footer column ("Liens rapides", "Suivez-nous", "Newsletter"...)
 .footer-col-title {
   font-size: 0.78rem;
   font-weight: 700;
@@ -65,6 +72,7 @@
 }
 
 /* Liens rapides */
+// Vertical list of quick navigation links
 .footer-links {
   list-style: none;
   margin: 0;
@@ -75,7 +83,7 @@
 }
 
 .footer-links a {
-  color: rgba(245, 240, 232, 0.5);
+  color: var(--text-white);
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.2s;
@@ -86,6 +94,7 @@
 }
 
 /* Réseaux sociaux */
+// Row of circular social media icon buttons
 .footer-socials {
   display: flex;
   gap: 12px;
@@ -98,7 +107,7 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--bg-nav);
   color: var(--text-white);
   text-decoration: none;
   transition:
@@ -106,11 +115,12 @@
     color 0.2s;
 }
 
-.footer-social-link svg {
+.footer-social-link img {
   width: 18px;
   height: 18px;
 }
 
+// Inverts colors on hover: gold circle background instead of icon color change
 .footer-social-link:hover {
   background: var(--gold);
   color: var(--bg-nav);
@@ -119,10 +129,11 @@
 /* Newsletter */
 .footer-newsletter-desc {
   font-size: 0.9rem;
-  color: rgba(245, 240, 232, 0.5);
+  color: var(--text-white);
   margin: 0 0 16px;
 }
 
+// Email input + submit button laid out side by side as a single pill
 .footer-newsletter-form {
   display: flex;
 }
@@ -130,17 +141,17 @@
 .footer-newsletter-input {
   flex: 1;
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-right: none;
+  background: var(--bg-nav);
+  border: 1px solid var(--text-white);
+  border-right: none; // avoids a double border where it meets the button
   color: var(--text-white);
   font-size: 0.9rem;
   outline: none;
-  border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px; // rounded only on the left, button rounds the right side
 }
 
 .footer-newsletter-input::placeholder {
-  color: rgba(245, 240, 232, 0.3);
+  color: var(--text-white);
 }
 
 .footer-newsletter-input:focus {
@@ -158,14 +169,16 @@
   cursor: pointer;
   border-radius: 0 4px 4px 0;
   transition: background 0.2s;
-  white-space: nowrap;
+  white-space: nowrap; // prevents button text from wrapping on narrow widths
 }
 
 .footer-newsletter-btn:hover {
-  background: var(--gold-dark);
+  background: var(--text-red);
+  color: var(--text-white);
 }
 
 /* Barre basse */
+// Bottom bar: copyright on the left, legal links on the right
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -177,7 +190,7 @@
 
 .footer-copy {
   font-size: 0.85rem;
-  color: rgba(245, 240, 232, 0.3);
+  color: var(--text-white);
   margin: 0;
 }
 
@@ -188,7 +201,7 @@
 
 .footer-legal a {
   font-size: 0.85rem;
-  color: rgba(245, 240, 232, 0.3);
+  color: var(--text-white);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -198,12 +211,14 @@
 }
 
 /* Responsive */
+// Tablet: collapse 4 columns into 2
 @media (max-width: 900px) {
   .footer-main {
     grid-template-columns: 1fr 1fr;
   }
 }
 
+// Mobile: stack all footer columns into a single column, reduce padding, stack the bottom bar vertically
 @media (max-width: 560px) {
   .footer {
     padding: 48px 20px 0;

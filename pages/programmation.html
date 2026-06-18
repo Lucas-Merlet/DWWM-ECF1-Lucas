@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,24 +7,58 @@
     <link rel="stylesheet" href="/css/style.min.css" />
   </head>
   <body>
+    <!-- Placeholder div, filled via jQuery .load() at the bottom of the page -->
     <div id="header"></div>
+
     <section class="programmation">
+      <!-- Page title block -->
       <div class="page-header-prog">
         <h1>Programmation</h1>
         <p>Découvrez tous nos spectacles à venir</p>
       </div>
 
+      <!-- Filters bar: category, day, and availability filters, all toggled via JS (programmation.js) -->
       <div class="filters">
+        <!-- Category filters: "Tous" active by default -->
         <button class="filter-btn active" data-filter="tous">Tous</button>
         <button class="filter-btn" data-filter="theatre">Théâtre</button>
         <button class="filter-btn" data-filter="concert">Concerts</button>
         <button class="filter-btn" data-filter="standup">Stand-up</button>
 
-        <label class="filter-date" for="dateFilter">
-          <span class="visually-hidden">Filtrer par date</span>
-          <input type="date" id="dateFilter" class="filter-date__input" />
-        </label>
+        <!-- Decorative vertical separator (rotated 90deg via CSS) between filter groups -->
+        <hr class="filters-style" />
 
+        <!-- Day filters, grouped with role="group" + aria-label for screen readers -->
+        <div class="filter-days" role="group" aria-label="Filtrer par jour">
+          <button
+            class="filter-btn"
+            data-day="5"
+            type="button"
+            aria-pressed="false"
+          >
+            Vendredi
+          </button>
+          <button
+            class="filter-btn"
+            data-day="6"
+            type="button"
+            aria-pressed="false"
+          >
+            Samedi
+          </button>
+          <button
+            class="filter-btn"
+            data-day="0"
+            type="button"
+            aria-pressed="false"
+          >
+            Dimanche
+          </button>
+        </div>
+
+        <hr class="filters-style" />
+
+        <!-- Toggle filter: show only shows with remaining availability -->
         <button
           class="filter-btn filter-btn--dispo"
           id="dispoFilterBtn"
@@ -35,7 +69,10 @@
         </button>
       </div>
 
+      <!-- Empty grid, populated at runtime by programmation.js (fetches spectacles.json, renders cards, re-filters on button click) -->
       <div class="programmation__grid" id="eventsGrid"></div>
+
+      <!-- Pagination/load-more control -->
       <div class="load-more">
         <button class="load-more__btn" id="loadMoreBtn">
           Voir plus de spectacles
@@ -43,10 +80,11 @@
       </div>
     </section>
 
+    <!-- Placeholder div, filled via jQuery .load() at the bottom of the page -->
     <div id="footer"></div>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/header.js"></script>
-
     <script src="/js/programmation.js"></script>
     <script>
       $("#header").load("/pages/header.html");

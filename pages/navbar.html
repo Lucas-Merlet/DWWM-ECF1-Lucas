@@ -1,7 +1,14 @@
+<!-- Main desktop/sticky navbar -->
 <nav class="navbar" aria-label="Navigation principale">
+  <!-- Logo + brand name, links back to homepage -->
   <a class="nav-brand" href="/index.html" aria-label="Le Phosphore – Accueil">
+    <!-- Note: aria-hidden wrapper around an <img> that itself has its own alt text -->
     <div class="nav-logo" aria-hidden="true">
-      <img src="/img/picto-removebg-preview.png" alt="" class="nav-logo" />
+      <img
+        src="/img/picto-removebg-preview.png"
+        alt="logo-phosphore"
+        class="nav-logo"
+      />
     </div>
     <div class="nav-brand-text">
       <span class="nav-brand-name">Le Phosphore</span>
@@ -9,6 +16,7 @@
     </div>
   </a>
 
+  <!-- Desktop nav links, hidden below 768px via the SCSS media query -->
   <ul class="nav-links" role="list">
     <li><a href="/index.html">Accueil</a></li>
     <li><a href="/pages/programmation.html">Programmation</a></li>
@@ -16,8 +24,11 @@
     <li><a href="/pages/contact.html">Contact</a></li>
   </ul>
 
+  <!-- Desktop CTA, also hidden below 768px -->
   <a href="/pages/billetterie.html" class="nav-cta">Billetterie</a>
 
+  <!-- Hamburger menu button, hidden by default (desktop), shown only below 768px -->
+  <!-- aria-expanded should be toggled true/false by JS when the mobile menu opens/closes -->
   <button
     class="nav-toggle"
     aria-label="Ouvrir le menu"
@@ -30,6 +41,7 @@
   </button>
 </nav>
 
+<!-- Mobile dropdown menu, hidden by default via CSS (.nav-mobile), shown when JS adds .open -->
 <nav class="nav-mobile" id="mobile-menu" aria-label="Menu mobile">
   <a href="/index.html">Accueil</a>
   <a href="/pages/programmation.html">Programmation</a>

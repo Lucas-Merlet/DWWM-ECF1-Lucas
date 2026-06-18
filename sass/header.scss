@@ -1,3 +1,4 @@
+// Sticky top navbar, stays visible on scroll thanks to position: sticky
 .navbar {
   position: sticky;
   top: 0;
@@ -8,10 +9,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 2.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid var(--gold);
   font-family: "playfair";
 }
 
+// Logo + brand name, clickable link back to homepage
 .nav-brand {
   display: flex;
   align-items: center;
@@ -20,6 +22,7 @@
   flex-shrink: 0;
 }
 
+// Logo container, fairly large fixed size (94px)
 .nav-logo {
   width: 94px;
   height: 94px;
@@ -29,6 +32,7 @@
   flex-shrink: 0;
 }
 
+// Stacks brand name and tagline vertically next to the logo
 .nav-brand-text {
   display: flex;
   flex-direction: column;
@@ -44,6 +48,7 @@
   line-height: 1;
 }
 
+// Small gold tagline under the brand name
 .nav-brand-sub {
   color: var(--gold);
   font-size: 9.5px;
@@ -52,6 +57,7 @@
   font-weight: 400;
 }
 
+// Desktop horizontal nav menu
 .nav-links {
   display: flex;
   align-items: center;
@@ -70,6 +76,7 @@
   position: relative;
   padding-bottom: 3px;
 
+  // Animated underline, hidden by default (width: 0)
   &::after {
     content: "";
     position: absolute;
@@ -81,20 +88,23 @@
     transition: width 0.25s ease;
   }
 
+  // Gold text on hover or when marking the current page
   &:hover,
   &.active {
     color: var(--gold);
   }
 
+  // Underline grows to full width on hover/active
   &:hover::after,
   &.active::after {
     width: 100%;
   }
 }
 
+// "Réserver" style call-to-action button in the navbar
 .nav-cta {
   background: var(--gold);
-  color: #111;
+  color: var(--bg-nav);
   font-size: 12.5px;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -112,14 +122,17 @@
   align-items: center;
 
   &:hover {
-    background: var(--gold-dark);
+    background: var(--text-red);
+    color: var(--text-white);
   }
 
+  // Slight press-down effect on click
   &:active {
     transform: scale(0.97);
   }
 }
 
+// Hamburger menu button, hidden by default (desktop), shown only below 768px
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -129,6 +142,7 @@
   cursor: pointer;
   padding: 6px;
 
+  // Each of the 3 bars making up the hamburger icon
   span {
     display: block;
     width: 24px;
@@ -140,6 +154,7 @@
       opacity 0.3s;
   }
 
+  // Morphs the hamburger into an "X" when the .open class is toggled via JS
   &.open span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
@@ -151,12 +166,13 @@
   }
 }
 
+// Mobile dropdown menu, hidden by default, shown via .open class (toggled by the hamburger button)
 .nav-mobile {
   display: none;
   flex-direction: column;
   background: var(--bg-nav);
   padding: 1rem 2rem 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid var(--gold);
 
   &.open {
     display: flex;
@@ -170,22 +186,24 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     padding: 14px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--gold); // separates each link with a thin gold line
     transition: color 0.2s;
 
     &.active {
       color: var(--gold);
     }
 
+    // No separator under the last link
     &:last-child {
       border-bottom: none;
     }
   }
 
+  // CTA button duplicated for the mobile menu
   .nav-cta-mobile {
     margin-top: 1.2rem;
     background: var(--gold);
-    color: #111;
+    color: var(--bg-nav);
     font-size: 12.5px;
     font-weight: 800;
     letter-spacing: 0.14em;
@@ -197,6 +215,7 @@
   }
 }
 
+// Mobile breakpoint: swap the desktop nav/CTA for the hamburger toggle
 @media (max-width: 768px) {
   .nav-links,
   .nav-cta {

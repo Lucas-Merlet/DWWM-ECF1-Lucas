@@ -3,17 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- Generic placeholder title, same issue as on the Contact page -->
+    <title>Info Pratique</title>
     <link rel="stylesheet" href="/css/style.min.css" />
   </head>
+  <!-- .infos-page gives this page its light background, as seen in infos.scss -->
   <body class="infos-page">
+    <!-- Placeholder div, filled via jQuery .load() at the bottom of the page -->
     <div id="header"></div>
+
+    <!-- Dark intro banner -->
     <div class="page-header">
       <h1>Infos pratiques</h1>
       <p>Tout ce qu'il faut savoir pour votre venue</p>
     </div>
 
     <!-- ══ TABS ══ -->
+    <!-- Tab navigation bar, "Accès" active by default. JS (infos.js) presumably reads data-tab and toggles .active on the matching #panel-* -->
     <div class="tabs-bar">
       <div class="tabs">
         <button class="tab-btn active" data-tab="acces">
@@ -65,6 +71,7 @@
     </div>
 
     <!-- ══ TAB: ACCÈS ══ -->
+    <!-- Active panel on page load, matching the "acces" tab button above -->
     <div class="tab-panel active" id="panel-acces">
       <div class="panel-inner">
         <div class="access-layout">
@@ -76,6 +83,7 @@
               <p>15 Rue des Arts<br />75001 Paris</p>
             </div>
 
+            <!-- Metro lines specific to Paris (Châtelet) -->
             <div class="access-block">
               <h3>Métro</h3>
               <p>
@@ -94,7 +102,7 @@
               <p>Parking Les Halles – 99 Rue Berger (à 5 min à pied)</p>
             </div>
 
-            <a
+            
               href="https://www.google.com/maps?q=15+Rue+des+Arts,75001+Paris"
               target="_blank"
               class="btn-bordeaux"
@@ -103,14 +111,18 @@
           </div>
 
           <div class="map-embed">
-            <!-- Remplace le q= par ta vraie adresse, ou utilise une clé API Google Maps pour un embed personnalisé -->
+            <!-- Comment left in by the original template: q= still needs to be replaced with the real address -->
+            <!-- Replace the q= param with the real address, or use a Google Maps API key for a custom embed -->
+            <!-- This embed currently points to "Opéra National de Bordeaux", not the address listed above -->
             <iframe
-              src="https://www.google.com/maps?q=Ch%C3%A2telet,Paris&output=embed"
-              allowfullscreen
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1189.4394370533491!2d-0.5752954084146933!3d44.84234711342871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527da44cfc085%3A0x753333f9128100e1!2sOp%C3%A9ra%20National%20de%20Bordeaux%20-%20Grand-Th%C3%A9%C3%A2tre!5e0!3m2!1sfr!2sfr!4v1781779183670!5m2!1sfr!2sfr"
+              width="600"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-            >
-            </iframe>
+            ></iframe>
           </div>
         </div>
       </div>
@@ -119,6 +131,7 @@
     <!-- ══ TAB: TARIFS ══ -->
     <div class="tab-panel" id="panel-tarifs">
       <div class="panel-inner">
+        <!-- Inline style duplicated across all 4 remaining panel headings instead of a shared CSS class -->
         <h2
           style="
             font-family: &quot;EB Garamond&quot;, serif;
@@ -171,6 +184,7 @@
         >
           Nos services
         </h2>
+        <!-- 6 service cards: vestiaire, bar, billetterie, groupes, boutique, privatisation -->
         <div class="services-grid">
           <div class="service-card">
             <div class="service-card__icon">
@@ -268,6 +282,7 @@
         >
           Accessibilité
         </h2>
+        <!-- 4 accessibility info rows: wheelchair access, hearing loop, adapted restrooms, personalized welcome -->
         <div class="accessibility-list">
           <div class="accessibility-item">
             <div class="accessibility-item__icon">
@@ -350,6 +365,7 @@
         >
           Plan de salle
         </h2>
+        <!-- Placeholder block, content not implemented yet -->
         <div class="plan-wrap">
           <div class="plan-placeholder">
             <svg viewBox="0 0 24 24">
@@ -366,8 +382,11 @@
         </div>
       </div>
     </div>
+
+    <!-- Placeholder div, filled via jQuery .load() at the bottom of the page -->
     <div id="footer"></div>
 
+    <!-- header.js, index-programmation.js, and infos.js are all loaded BEFORE jQuery here -->
     <script src="/js/header.js"></script>
     <script src="/js/index-programmation.js"></script>
     <script src="/js/infos.js"></script>

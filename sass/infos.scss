@@ -1,7 +1,9 @@
+// Page wrapper, light background (contrasts with the dark theme used elsewhere on the site)
 .infos-page {
   background-color: var(--text-white);
 }
 
+// Dark intro banner at the top: page title + subtitle
 .page-header {
   background: var(--bg-nav);
   text-align: center;
@@ -23,12 +25,13 @@
 }
 
 /* ══ TABS BAR ══ */
+// Sticky-feeling bar holding the tab buttons (Accès / Tarifs / Services / Accessibilité / Plan de salle)
 .tabs-bar {
   background: var(--text-white);
   border-bottom: 1px solid color-mix(in srgb, var(--bg-nav) 15%, transparent);
   display: flex;
   justify-content: center;
-  overflow-x: auto;
+  overflow-x: auto; // allows horizontal scroll if tabs don't fit on small screens
 }
 
 .tabs {
@@ -37,6 +40,7 @@
   padding: 0 2rem;
 }
 
+// Single tab button: icon + label, with an animated bottom border on active/hover
 .tab-btn {
   background: none;
   border: none;
@@ -77,6 +81,7 @@
   stroke: var(--bg-nav);
 }
 
+// Active tab is highlighted in red (bordeaux), both text and underline
 .tab-btn.active {
   color: var(--text-red);
   border-bottom-color: var(--text-red);
@@ -87,6 +92,7 @@
 }
 
 /* ══ TAB PANELS ══ */
+// Panels are hidden by default, JS toggles .active to show the selected one (only one visible at a time)
 .tab-panel {
   display: none;
 }
@@ -95,6 +101,7 @@
   display: block;
 }
 
+// Shared inner content wrapper for every panel, centers and caps content width
 .panel-inner {
   max-width: 1300px;
   margin: 0 auto;
@@ -103,6 +110,7 @@
 }
 
 /* ── Accès layout ── */
+// "Accès" tab: info column + map side by side
 .access-layout {
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -118,6 +126,7 @@
   color: var(--bg-nav);
 }
 
+// Single info block (e.g. address, public transport, parking)
 .access-block {
   margin-bottom: 1.4rem;
 }
@@ -139,6 +148,7 @@
   color: var(--bg-nav);
 }
 
+// Red CTA button (e.g. "Itinéraire" / directions link)
 .btn-bordeaux {
   display: inline-block;
   background: var(--text-red);
@@ -159,6 +169,7 @@
   background: color-mix(in srgb, var(--text-red) 70%, var(--bg-nav));
 }
 
+// Embedded map container (likely Google Maps iframe), fixed minimum height
 .map-embed {
   border-radius: 10px;
   overflow: hidden;
@@ -175,6 +186,7 @@
 }
 
 /* ── Tarifs ── */
+// "Tarifs" tab: 3-column grid of pricing cards
 .tarifs-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -197,6 +209,7 @@
   color: var(--bg-nav);
 }
 
+// Big price number, highlighted in red
 .tarif-card .price {
   font-family: "playfair", serif;
   font-size: 2.1rem;
@@ -205,6 +218,7 @@
   margin-bottom: 0.6rem;
 }
 
+// Smaller unit/suffix text inside the price (e.g. "/ personne")
 .tarif-card .price span {
   font-family: "playfair", serif;
   font-size: 0.9rem;
@@ -220,12 +234,14 @@
 }
 
 /* ── Services ── */
+// "Services" tab: 3-column grid of dark cards (e.g. bar, vestiaire, parking)
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
+// Dark card with a red border, contrasts with the light tarif cards above
 .service-card {
   background: var(--bg-nav);
   border: 1px solid var(--text-red);
@@ -268,6 +284,7 @@
 }
 
 /* ── Accessibilité ── */
+// "Accessibilité" tab: vertical stack of info rows (PMR access, hearing loop, etc.)
 .accessibility-list {
   display: flex;
   flex-direction: column;
@@ -319,13 +336,14 @@
 }
 
 /* ── Plan de salle ── */
+// "Plan de salle" tab: currently just a placeholder block (no actual seating plan image/diagram yet)
 .plan-wrap {
   text-align: center;
 }
 
 .plan-placeholder {
   background: var(--bg-nav);
-  border: 1px dashed color-mix(in srgb, var(--bg-nav) 35%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--bg-nav) 35%, transparent); // dashed border signals "placeholder" visually
   border-radius: 10px;
   padding: 4rem 2rem;
   color: var(--text-white);
@@ -345,6 +363,7 @@
 }
 
 /* ══ RESPONSIVE ══ */
+// Tablet: stack the access layout, drop pricing/services grids to 2 columns
 @media (max-width: 1000px) {
   .access-layout {
     grid-template-columns: 1fr;
@@ -355,11 +374,13 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  // Note: targets .footer__top, but the footer file uses .footer-main / BEM dashes elsewhere — check class name consistency
   .footer__top {
     grid-template-columns: 1fr 1fr;
   }
 }
 
+// Mobile: hide desktop nav, shrink header title, collapse all grids to 1 column, stack footer bottom bar
 @media (max-width: 600px) {
   .navbar__nav {
     display: none;
@@ -374,6 +395,7 @@
     grid-template-columns: 1fr;
   }
 
+  // Same naming concern as above (.footer__top, .footer__bottom)
   .footer__top {
     grid-template-columns: 1fr;
   }

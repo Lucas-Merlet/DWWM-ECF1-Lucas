@@ -4,6 +4,7 @@
 @import "contact.scss";
 @import "programmation.scss";
 @import "infos.scss";
+@import "fiche-programmation.scss";
 
 *,
 *::before,
@@ -13,9 +14,9 @@
   padding: 0;
 }
 
+// Design system color tokens — only these 4 colors should be used across the project
 :root {
   --gold: #d4a843;
-  --gold-dark: #d99200;
   --bg-nav: #2a2d34;
   --text-white: #f5f0e8;
   --nav-height: 80px;
@@ -41,4 +42,76 @@ body {
 
 h1 {
   text-transform: uppercase;
+}
+
+// ── Intro animation: black fade + curtains opening on page load ──
+#intro-animation {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden; // prevents any overflow during the curtain animation
+  max-height: 100vh;
+}
+
+.fade-black {
+  position: absolute;
+  inset: 0;
+  background: black;
+  animation: revealScene 4s ease forwards;
+}
+
+.curtain {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-height: 100vh; // constrained to the viewport height
+}
+
+.curtain-left {
+  left: 0;
+  transform-origin: left center;
+
+  animation: openLeft 2.5s ease forwards;
+  background-image: url("/img/rideaux-gauche.png");
+}
+
+.curtain-right {
+  background-image: url("/img/rideaux-droit.png");
+  right: 0;
+  transform-origin: right center;
+  animation: openRight 2.5s ease forwards;
+}
+
+@keyframes revealScene {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes openLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-105%); // negative value to slide off to the left
+  }
+}
+
+@keyframes openRight {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
 }

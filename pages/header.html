@@ -1,9 +1,11 @@
 <header>
+  <!-- Placeholder div, filled via jQuery .load() below -->
   <div id="navbar"></div>
 
   <script>
+    // Inject the shared navbar HTML, then highlight the current page's nav link
+    // once the markup has actually loaded (callback ensures the links exist in the DOM first)
     $("#navbar").load("/pages/navbar.html", function () {
-      // Ce callback ne s'exécute qu'une fois le HTML de la navbar réellement injecté
       highlightCurrentPage();
     });
   </script>

@@ -3,12 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- Generic placeholder title, not yet customized for this page -->
+    <title>Contact</title>
     <link rel="stylesheet" href="/css/style.min.css" />
-    <script src="/js/header.js"></script>
   </head>
+  <!-- .info-contact applies the dark background + full-height styling for this page -->
   <body class="info-contact">
+    <!-- Placeholder div, filled via jQuery .load() at the bottom of the page -->
     <div id="header"></div>
+
+    <!-- Hero banner: background image + page title -->
     <div class="contact">
       <div class="contact__bg"></div>
       <div class="contact__fade"></div>
@@ -20,9 +24,13 @@
         </p>
       </div>
     </div>
+
+    <!-- Centered wrapper holding the contact info card + form -->
     <div class="contact-wrap">
       <div class="contact-panel">
+        <!-- Left column: address, phone, email, opening hours -->
         <aside class="contact-info">
+          <!-- Address block -->
           <div class="info-item">
             <div class="info-item__icon">
               <svg viewBox="0 0 24 24">
@@ -42,6 +50,7 @@
 
           <hr class="info-divider" />
 
+          <!-- Phone block -->
           <div class="info-item">
             <div class="info-item__icon">
               <svg viewBox="0 0 24 24">
@@ -61,6 +70,7 @@
 
           <hr class="info-divider" />
 
+          <!-- Email block -->
           <div class="info-item">
             <div class="info-item__icon">
               <svg viewBox="0 0 24 24">
@@ -81,6 +91,7 @@
 
           <hr class="info-divider" />
 
+          <!-- Opening hours block -->
           <div class="info-item">
             <div class="info-item__icon">
               <svg viewBox="0 0 24 24">
@@ -93,6 +104,7 @@
               <p class="info-item__detail">
                 Du lundi au vendredi : 10h – 18h<br />
                 Le samedi : 14h – 18h<br />
+                <!-- Inline style overrides the design system; hardcoded dark gray on a dark background -->
                 <span style="color: #555; font-size: 0.78rem"
                   >(uniquement les jours de spectacle)</span
                 >
@@ -100,10 +112,13 @@
             </div>
           </div>
         </aside>
+
+        <!-- Right column: contact form (note: not wrapped in an actual <form> element) -->
         <div class="contact-form">
           <h2>Envoyez-nous un message</h2>
 
           <div class="form-row">
+            <!-- "Nom" / "Prénom" fields, side by side -->
             <input type="text" placeholder="Nom *" required />
             <input type="text" placeholder="Prénom *" required />
           </div>
@@ -113,6 +128,7 @@
           </div>
 
           <div class="form-group">
+            <!-- .select-wrap adds the custom dropdown arrow via CSS -->
             <div class="select-wrap">
               <select required>
                 <option value="" disabled selected>Sujet *</option>
@@ -129,6 +145,7 @@
             <textarea placeholder="Votre message *" required></textarea>
           </div>
 
+          <!-- RGPD consent checkbox, required before submitting -->
           <div class="form-check">
             <input type="checkbox" id="rgpd" required />
             <label for="rgpd">
@@ -142,9 +159,12 @@
         </div>
       </div>
     </div>
+
+    <!-- header.js loaded a second time here -->
     <script src="/js/header.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
+      // Inject the shared header HTML into its placeholder div
       $("#header").load("/pages/header.html");
     </script>
   </body>

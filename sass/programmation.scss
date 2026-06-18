@@ -1,3 +1,4 @@
+// Page title block for the "Programmation" page
 .page-header-prog {
   padding: 3.5rem 0rem 2rem;
   margin: 0 auto;
@@ -13,13 +14,29 @@
   color: var(--text-muted);
 }
 
+// Filters bar: holds the vertical "style" label and the day filter buttons
 .filters {
   margin: 0 auto;
   padding: 0 0rem 2rem;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid var(--bg-nav);
   display: flex;
   gap: 0;
 }
+
+// Rotated text label (likely "FILTRER PAR" or similar), turned 90° to read vertically
+.filters-style {
+  display: flex;
+  width: 3%;
+  transform: rotate(90deg);
+}
+
+// Row of day/category filter buttons
+.filter-days {
+  display: flex;
+  gap: 0;
+}
+
+// Single filter button (e.g. a day of the week or category), underline appears when active
 .filter-btn {
   background: none;
   border: none;
@@ -38,18 +55,22 @@
     border-color 0.2s;
 }
 .filter-btn:hover {
-  color: #fff;
+  color: var(--text-white);
 }
+
+// Active filter: gold text + gold underline
 .filter-btn.active {
   color: var(--gold);
   border-bottom-color: var(--gold);
 }
 
+// "Load more" section at the bottom of the events grid
 .load-more {
   display: flex;
   justify-content: center;
   padding: 3rem 2.5rem 4rem;
 }
+
 .load-more__btn {
   background: var(--gold-btn);
   color: var(--text-white);
@@ -63,6 +84,8 @@
   cursor: pointer;
   transition: background 0.2s;
 }
+
+// Inverts to filled gold on hover, border removed to avoid a visible edge against the gold fill
 .load-more__btn:hover {
   background: var(--gold);
   color: var(--bg-nav);
@@ -70,11 +93,14 @@
 }
 
 /* ══ RESPONSIVE ══ */
+// Tablet: events grid drops from its default column count to 2
 @media (max-width: 1000px) {
   .events-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+// Mobile: hide desktop nav, single-column events grid, shrink page title
 @media (max-width: 600px) {
   .navbar__nav {
     display: none;

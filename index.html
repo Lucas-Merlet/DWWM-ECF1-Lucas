@@ -3,90 +3,118 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- SEO meta description for search engines -->
+    <meta
+      name="description"
+      content="Le Phosphore, salle de spectacle parisienne : théâtre, concerts et stand-up. Découvrez la programmation et réservez vos places."
+    />
+    <title>Le Phosphore — Salle de spectacle</title>
     <link rel="stylesheet" href="/css/style.min.css" />
   </head>
   <body>
-    <section class="hero">
-      <div id="header"></div>
+    <!-- Intro animation overlay: black fade + curtain opening effect on page load -->
+    <div id="intro-animation">
+      <div class="fade-black"></div>
 
-      <div class="hero__text">
-        <div class="hero-1">
-          <div class="hero-theme gold">théâtre . concerts . stand-up</div>
-          <div><h1 class="hero-title">le phosphore</h1></div>
-        </div>
-        <hr />
-        <div>
-          <div class="hero-theme">Une scène, toutes les émotions</div>
+      <div class="curtain curtain-left"></div>
+      <div class="curtain curtain-right"></div>
+    </div>
+    <main>
+      <!-- Hero section: full-viewport intro with title and CTA -->
+      <section class="hero">
+        <!-- Placeholder div, filled via jQuery .load() at the bottom of the page -->
+        <div id="header"></div>
+
+        <div class="hero__text">
+          <div class="hero-1">
+            <div class="hero-theme gold">théâtre . concerts . stand-up</div>
+            <div><h1 class="hero-title">le phosphore</h1></div>
+          </div>
+          <hr />
           <div>
-            <a href="/pages/programmation.html" class="hero-button"
-              >VOIR LA PROGRAMMATION</a
-            >
+            <div class="hero-theme">Une scène, toutes les émotions</div>
+            <div>
+              <!-- Main CTA linking to the full programmation page -->
+              <a href="/pages/programmation.html" class="hero-button"
+                >VOIR LA PROGRAMMATION</a
+              >
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="bio">
-      <div class="bio-info">
-        <p class="bio-title">bienvenue au phosphore</p>
-        <h2>Votre salle de spectacle au cœur de la ville</h2>
-        <hr />
-        <p class="bio-text">
-          Le Phosphore, c'est un lieu vivant et chaleureux qui accueille toute
-          l'année des artistes d'exception et des spectacles pour tous les
-          publics.
-        </p>
+      </section>
 
-        <ul class="bio-features">
-          <li>
-            <img
-              src="/img/favicon_io/icons-theatre.svg"
-              alt=""
-              class="bio-feature-icon"
-            />
-            <h3>Théâtre</h3>
-            <p>Émotions et grands classiques</p>
-          </li>
-          <li>
-            <img
-              src="/img/favicon_io/music-svgrepo-com-1.svg"
-              alt=""
-              class="bio-feature-icon"
-            />
-            <h3>Concerts</h3>
-            <p>Tous les styles en live</p>
-          </li>
-          <li>
-            <img
-              src="/img/favicon_io/micro-svgrepo-com-1.svg"
-              alt=""
-              class="bio-feature-icon"
-            />
-            <h3>Stand-up</h3>
-            <p>Rire, humour et nouveautés</p>
-          </li>
-        </ul>
-      </div>
+      <!-- Bio section: presentation of the venue + the 3 types of shows offered -->
+      <section class="bio">
+        <article class="bio-info">
+          <p class="bio-title">bienvenue au phosphore</p>
+          <h2>Votre salle de spectacle au cœur de la ville</h2>
+          <hr />
+          <p class="bio-text">
+            Le Phosphore, c'est un lieu vivant et chaleureux qui accueille toute
+            l'année des artistes d'exception et des spectacles pour tous les
+            publics.
+          </p>
 
-      <figure class="bio-img">
-        <img src="/img/phosphore.png" alt="Façade du Phosphore" />
-      </figure>
-    </section>
-    <section class="programmation">
-      <div class="programmation__header">
-        <h2 class="programmation__title">Prochains Événements</h2>
-        <a href="/pages/programmation.html" class="programmation__link"
-          >Voir toute la programmation +</a
-        >
-      </div>
-      <div class="programmation__grid" id="programmation-grid"></div>
-    </section>
-    <div id="footer"></div>
+          <!-- 3 feature cards: theatre / concerts / stand-up, each with icon + title + short description -->
+          <ul class="bio-features">
+            <li>
+              <img
+                src="/img/favicon_io/icons-theatre.svg"
+                alt="theatre"
+                class="bio-feature-icon"
+              />
+              <h3>Théâtre</h3>
+              <p>Émotions et grands classiques</p>
+            </li>
+            <li>
+              <img
+                src="/img/favicon_io/music-svgrepo-com-1.svg"
+                alt="concerts"
+                class="bio-feature-icon"
+              />
+              <h3>Concerts</h3>
+              <p>Tous les styles en live</p>
+            </li>
+            <li>
+              <img
+                src="/img/favicon_io/micro-svgrepo-com-1.svg"
+                alt="stand-up"
+                class="bio-feature-icon"
+              />
+              <h3>Stand-up</h3>
+              <p>Rire, humour et nouveautés</p>
+            </li>
+          </ul>
+        </article>
 
+        <!-- Decorative photo of the venue's facade -->
+        <figure class="bio-img">
+          <img src="/img/phosphore.png" alt="Façade du Phosphore" />
+        </figure>
+      </section>
+
+      <!-- Upcoming events preview: header + link to full schedule, grid populated dynamically by JS -->
+      <section class="programmation">
+        <div class="programmation__header">
+          <h2 class="programmation__title">Prochains Événements</h2>
+          <a href="/pages/programmation.html" class="programmation__link"
+            >Voir toute la programmation +</a
+          >
+        </div>
+        <!-- Empty container, filled at runtime by index-programmation.js (fetches spectacles.json) -->
+        <div class="programmation__grid" id="programmation-grid"></div>
+      </section>
+
+      <!-- Placeholder div, filled via jQuery .load() at the bottom of the page -->
+      <div id="footer"></div>
+    </main>
+
+    <!-- jQuery, required for the .load() calls below -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/header.js"></script>
     <script src="/js/index-programmation.js"></script>
     <script>
+      // Inject shared header/footer HTML into their placeholder divs
       $("#header").load("/pages/header.html");
       $("#footer").load("/pages/footer.html");
     </script>

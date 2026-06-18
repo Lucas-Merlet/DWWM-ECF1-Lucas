@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Generic page title, not dynamic per show — consider updating via JS once the show data loads -->
+    <title>fiche programmation</title>
+    <link rel="stylesheet" href="/css/style.min.css" />
+  </head>
+  <body>
+    <!-- Placeholder div, filled via jQuery .load() at the bottom of the page -->
+    <div id="header"></div>
+
+    <!-- Empty container, populated at runtime by fiche-programmation.js -->
+    <!-- (likely reads a show ID from the URL query string, fetches spectacles.json, and injects the matching .fiche-spectacle markup) -->
+    <section class="fiche-spectacle"></section>
+
+    <!-- Placeholder div, filled via jQuery .load() at the bottom of the page -->
+    <div id="footer"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/header.js"></script>
+    <script src="/js/fiche-programmation.js"></script>
+    <script>
+      // Inject shared header/footer HTML into their placeholder divs
+      $("#header").load("/pages/header.html");
+      $("#footer").load("/pages/footer.html");
+    </script>
+  </body>
+</html>
