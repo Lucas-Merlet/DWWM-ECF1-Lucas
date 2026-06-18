@@ -35,3 +35,13 @@ function highlightCurrentPage() {
     }
   });
 }
+const newsletterBtn = document.querySelector(".footer-newsletter-btn");
+const newsletterCheckbox = document.getElementById("newsletter-rgpd");
+
+newsletterBtn.addEventListener("click", () => {
+  if (!newsletterCheckbox.checked) {
+    newsletterCheckbox.focus();
+    return;
+  }
+  // logique d'inscription ici
+});

@@ -77,11 +77,11 @@ h1 {
   transform-origin: left center;
 
   animation: openLeft 2.5s ease forwards;
-  background-image: url("/img/rideaux-gauche.png");
+  background-image: url("/img/rideaux-gauche.webp");
 }
 
 .curtain-right {
-  background-image: url("/img/rideaux-droit.png");
+  background-image: url("/img/rideaux-droit.webp");
   right: 0;
   transform-origin: right center;
   animation: openRight 2.5s ease forwards;
